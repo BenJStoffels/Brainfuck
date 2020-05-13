@@ -1,4 +1,4 @@
-import sys
+import argparse
 
 
 def create_brace_map(input_string):
@@ -20,6 +20,15 @@ def create_brace_map(input_string):
     return brace_map
 
 
+def get_arguments():
+    """Kijkt wat je als argumenten hebt ingegeven by het runnen van het pythonscript.
+    Geeft ook vanzelf handige errormessages, and een help pagina.
+    Als je de helppagina wilt gebruiken type in uw powershell: python brainfuck.py -h"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument("file", help="The brainfuck script you want to run")
+    return parser.parse_args()
+
+
 def get_input(path_to_file):
     """Dit leest de contents van een file, op de locatie path_to_file"""
     with open(path_to_file, "r") as file:
@@ -39,12 +48,9 @@ def remove_unused_characters(input_string):
 
 
 def main():
-    # Dit zorgt ervoor dat je een text-bestand hebt ingegeven
-    if not len(sys.argv) > 1:
-        raise EnvironmentError(
-            "Please enter the file with your Brainfuck code!")
+    args = get_arguments()
 
-    inp = get_input(sys.argv[1])
+    inp = get_input(args.file)
     inp = remove_unused_characters(inp)
 
     brace_map = create_brace_map(inp)
@@ -103,7 +109,6 @@ def main():
             # maar je weet nooit wat voor vreemde errors je krijgt als je het vergeet te controleren
             print("something went horribbly wrong, I'm really sorry.")
 
-        # volgende teken (ik denk dat dit voorzich spreekt, maar toch voor de zekerheid)
         code_ptr += 1
 
     print()
