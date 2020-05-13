@@ -1,0 +1,11 @@
+﻿[
+  om een cijfer in de output te zien, moet je het cijfer + 48 doen.
+  je moet wel oppassen, 11 wordt niet 59 maar 2 keer 49.
+  48 = 8 * 6
+]
+
+> ++++ ++++ [ < +++ +++ > - ]
+
+++++ +++ (7)
+
+<[>>+>+<<<-]>>>[<<<+>>>-]<<[>+>+<<-]>>[<<+>>-] <.<
