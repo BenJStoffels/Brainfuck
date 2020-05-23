@@ -1,6 +1,6 @@
 ﻿[ Om een getal op te splitsen in zijn verschillende cijfers,
 moet je een soort staartdeling doen:
-in 78 gaat tien 7 keer, en dan trek je 70 af van 78 en dan hou je 8 over ]
+in 78 gaat tien 7 keer, en dan trek je 70 af van 78 en dan hou je 8 over. ]
 
 > ++++++ [<+++++ +++++ +++>-]<
 > +++++++++ <
