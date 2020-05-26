@@ -26,6 +26,11 @@ def get_input(path_to_file):
     return inp
 
 
+def save_input(path_to_file, new_input):
+    with open(path_to_file, "w") as file:
+        file.write(new_input)
+
+
 def get_hex_disp(byte):
     return "0x" + str(hex(byte))[2:].rjust(2, "0")
 

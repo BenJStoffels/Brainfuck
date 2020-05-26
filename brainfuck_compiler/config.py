@@ -24,6 +24,10 @@ def get_arguments():
         help="display the output in ascii", action="store_true"
     )
     parser.add_argument(
+        "-e", "--edit",
+        help="edit file", action="store_true"
+    )
+    parser.add_argument(
         "-d", "--debug",
         help="enable debugging features", action="store_true"
     )
@@ -36,5 +40,6 @@ def get_config(args):
         "length": args.length if args.length else 30,
         "hex": args.hex,
         "ascii": args.ascii,
+        "edit": args.edit,
         "debug": args.debug
     }
