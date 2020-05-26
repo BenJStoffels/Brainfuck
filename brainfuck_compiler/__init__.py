@@ -7,6 +7,10 @@ from brainfuck_compiler.edit import EditWindow
 def main():
     args = get_arguments()
 
+    if args.get("new"):
+        with open(args.get("file"), "w") as f:
+            f.write("")
+
     inp = get_input(args.get("file"))
 
     if args.get("edit"):

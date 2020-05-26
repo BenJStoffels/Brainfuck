@@ -28,8 +28,12 @@ def get_arguments():
         help="edit file", action="store_true"
     )
     parser.add_argument(
+        "-n", "--new",
+        help="create new file", action="store_true"
+    )
+    parser.add_argument(
         "-d", "--debug",
-        help="enable debugging features", action="store_true"
+        help="werkt nog niet.", action="store_true"
     )
     return get_config(parser.parse_args())
 
@@ -41,5 +45,6 @@ def get_config(args):
         "hex": args.hex,
         "ascii": args.ascii,
         "edit": args.edit,
+        "new": args.new and args.edit,
         "debug": args.debug
     }

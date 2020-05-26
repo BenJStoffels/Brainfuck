@@ -16,6 +16,10 @@ class EditWindow:
         self.root = tk.Tk()
         self.root.title("Brainfuck editor")
 
+        self.memoryFrame = tk.Frame(self.root)
+        self.createMemory()
+        self.memoryFrame.pack(side=tk.TOP, padx=20, fill='x')
+
         self.buttonsFrame = tk.Frame(self.root)
         self.saveButton = tk.Button(
             self.buttonsFrame, command=self.save, text='save')
@@ -25,20 +29,32 @@ class EditWindow:
         self.saveButton.pack(side=tk.RIGHT, padx=20)
         self.runButton.pack(side=tk.RIGHT, padx=0)
 
-        self.buttonsFrame.pack(side=tk.TOP, pady=50, fill='x')
+        self.buttonsFrame.pack(side=tk.TOP, pady=10, fill='x')
 
         self.text = ScrolledText(self.root)
         self.text.insert(tk.END, self.input_string)
         self.text.pack()
 
+    def createMemory(self):
+        self.memorySubFrame = tk.Frame(self.memoryFrame)
+        for i, value in enumerate(self.memory):
+            label = tk.Label(self.memorySubFrame, text=str(value))
+            label.grid(row=1, column=i)
+            self.memorySubFrame.columnconfigure(i, weight=1)
+
+        self.memorySubFrame.pack(side=tk.TOP, padx=0, fill=tk.BOTH)
+
+    def updateMemory(self):
+        self.memorySubFrame.destroy()
+        self.createMemory()
+
     def save(self):
         self.input_string = self.text.get("1.0", tk.END)
-        print(self.input_string)
         save_input(self.file, self.input_string)
 
     def run(self):
         self.memory = run_inp(self.input_string, **self.config)
-        print(self.memory)
+        self.updateMemory()
 
     def main(self):
         self.root.mainloop()
