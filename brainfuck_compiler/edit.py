@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
-from brainfuck_compiler.utils import save_input
+from brainfuck_compiler.utils import save_input, get_hex_disp
 from brainfuck_compiler.run import run_inp
 
 
@@ -38,7 +38,9 @@ class EditWindow:
     def createMemory(self):
         self.memorySubFrame = tk.Frame(self.memoryFrame)
         for i, value in enumerate(self.memory):
-            label = tk.Label(self.memorySubFrame, text=str(value))
+            text = str(value) if not self.config.get(
+                "hex") else get_hex_disp(value)
+            label = tk.Label(self.memorySubFrame, text=text)
             label.grid(row=1, column=i)
             self.memorySubFrame.columnconfigure(i, weight=1)
 
